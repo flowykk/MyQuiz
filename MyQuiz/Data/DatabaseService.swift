@@ -44,7 +44,7 @@ final class DatabaseService {
         }
     }
     
-    func clear() {
+    func clearAllTopics() {
         do {
             try context?.delete(model: Topic.self)
         } catch {
@@ -66,7 +66,7 @@ final class DatabaseService {
         }
     }
     
-    func deleteTask(topic: Topic) {
+    func deleteTopic(topic: Topic) {
         context?.delete(topic)
     }
 }

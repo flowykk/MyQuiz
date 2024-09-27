@@ -49,7 +49,7 @@ final class InitialPresenter: InitialPresenterProtocol {
     }
     
     func clearTopicsData() {
-        DatabaseService.shared.clear()
+        DatabaseService.shared.clearAllTopics()
         interactor?.getTopics()
     }
 }
