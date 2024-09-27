@@ -14,6 +14,8 @@ protocol SettingsRouterProtocol: AnyObject {
     var entry: SettingsEntryPoint? { get }
     
     static func start() -> SettingsRouterProtocol
+    
+    func navigateToInitial()
 }
 
 final class SettingsRouter: SettingsRouterProtocol {
@@ -39,5 +41,7 @@ final class SettingsRouter: SettingsRouterProtocol {
         return router
     }
     
-    
+    func navigateToInitial() {
+        entry?.navigationController?.popViewController(animated: true)
+    }
 }
