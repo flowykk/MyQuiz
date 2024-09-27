@@ -15,7 +15,9 @@ protocol InitialPresenterProtocol: AnyObject {
     
     func interactorDidFetchCategories(with categories: [String])
     func interactorDidFetchTopics(with topics: [Topic])
+    
     func topicTapped(with topic: Topic)
+    func settingsButtonTapped()
     
     func showClearDataAlert()
     func clearTopicsData()
@@ -42,6 +44,10 @@ final class InitialPresenter: InitialPresenterProtocol {
     
     func topicTapped(with topic: Topic) {
         router?.navigateToQuestion(with: topic)
+    }
+    
+    func settingsButtonTapped() {
+        router?.navigateToSettings()
     }
     
     func showClearDataAlert() {

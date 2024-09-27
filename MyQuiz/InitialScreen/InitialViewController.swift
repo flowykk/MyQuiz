@@ -70,6 +70,11 @@ extension InitialViewController {
         presenter?.showClearDataAlert()
         updateTableView()
     }
+    
+    @objc
+    private func settingsButtonTapped() {
+        presenter?.settingsButtonTapped()
+    }
 }
 
 // MARK: - UI Configuration
@@ -101,7 +106,7 @@ extension InitialViewController {
             image: image,
             style: .plain,
             target: self,
-            action: nil)
+            action: #selector(settingsButtonTapped))
         navigationItem.leftBarButtonItem?.tintColor = Colors.labelsColor
     }
     
