@@ -133,7 +133,7 @@ extension InitialViewController {
         
         view.addSubview(resetStatsButton)
         resetStatsButton.pinHorizontal(to: view, 15)
-        resetStatsButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor)
+        resetStatsButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 10)
         resetStatsButton.setHeight(45)
     }
     
