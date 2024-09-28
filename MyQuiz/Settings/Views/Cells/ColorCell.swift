@@ -34,12 +34,10 @@ final class ColorCell: UICollectionViewCell {
 
 extension ColorCell {
     private func configure() {
-        self.setWidth(60)
-        self.setHeight(60)
+        self.setWidth(50)
+        self.setHeight(50)
         
-        colorView.layer.cornerRadius = 30
-        colorView.layer.borderWidth = 3
-        colorView.layer.borderColor = UIColor.systemGray3.cgColor
+        colorView.layer.cornerRadius = 25
         
         addSubview(colorView)
         colorView.pin(to: self)

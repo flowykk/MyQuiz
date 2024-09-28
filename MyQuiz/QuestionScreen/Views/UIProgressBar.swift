@@ -43,7 +43,7 @@ extension UIProgressBar {
         tintView.layer.cornerRadius  = 5
         
         trackView.backgroundColor = .systemGray5
-        tintView.backgroundColor  = .systemYellow
+        tintView.backgroundColor  = Colors.accentColor
         
         trackView.addSubview(tintView)
         self.addSubview(trackView)

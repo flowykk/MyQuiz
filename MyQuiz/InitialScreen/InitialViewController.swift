@@ -39,6 +39,7 @@ final class InitialViewController: UIViewController, InitialViewControllerProtoc
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        configureTopicsTableView()
         updateTableView()
     }
 }

@@ -33,10 +33,10 @@ extension ColorsCollectionView {
         
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
-        backgroundColor = .gray.withAlphaComponent(0.2)
+        backgroundColor = .gray.withAlphaComponent(0.15)
         
         layer.cornerRadius = 15
-        setHeight(90)
+        setHeight(80)
     }
 }
 
@@ -60,8 +60,6 @@ extension ColorsCollectionView: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension ColorsCollectionView: UICollectionViewDelegateFlowLayout {
@@ -70,7 +68,7 @@ extension ColorsCollectionView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: 60, height: 60)
+        return CGSize(width: 50, height: 50)
     }
     
     func collectionView(
@@ -78,7 +76,7 @@ extension ColorsCollectionView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .zero, left: 10, bottom: .zero, right: 10)
+        return UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: 20)
     }
 
 }
