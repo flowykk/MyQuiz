@@ -31,9 +31,7 @@ final class InitialViewController: UIViewController, InitialViewControllerProtoc
     var topics        = [Topic]()
     
     private let topicsTableView = UITableView()
-    
-    private let resetStatsButton = UIButton()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,7 +68,7 @@ extension InitialViewController {
     }
     
     @objc
-    private func resetStatsButtonTapped() {
+    private func trashButtonTapped() {
         presenter?.showClearDataAlert()
         updateTableView()
     }
@@ -87,9 +85,9 @@ extension InitialViewController {
         view.backgroundColor = Colors.backgroundColor
         
         configureNavigationItem()
+        configureSettingsButton()
         configureTrashButton()
         
-        configureResetStatsButton()
         configureTopicsTableView()
     }
     
@@ -100,7 +98,7 @@ extension InitialViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
-    private func configureTrashButton() {
+    private func configureSettingsButton() {
         let largeFont     = UIFont.systemFont(ofSize: 15, weight: .bold)
         let configuration = UIImage.SymbolConfiguration(font: largeFont)
         let image         = UIImage(systemName: "gearshape.fill", withConfiguration: configuration)
@@ -113,18 +111,17 @@ extension InitialViewController {
         navigationItem.leftBarButtonItem?.tintColor = Colors.labelsColor
     }
     
-    private func configureResetStatsButton() {
-        resetStatsButton.setTitle("Очистить статистику", for: .normal)
-        resetStatsButton.backgroundColor = .systemPink
-        resetStatsButton.layer.cornerRadius = 15
-        resetStatsButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+    private func configureTrashButton() {
+        let largeFont     = UIFont.systemFont(ofSize: 15, weight: .bold)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image         = UIImage(systemName: "trash.fill", withConfiguration: configuration)
         
-        resetStatsButton.addTarget(self, action: #selector(resetStatsButtonTapped), for: .touchUpInside)
-        
-        view.addSubview(resetStatsButton)
-        resetStatsButton.pinHorizontal(to: view, 15)
-        resetStatsButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 10)
-        resetStatsButton.setHeight(45)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: image,
+            style: .plain,
+            target: self,
+            action: #selector(trashButtonTapped))
+        navigationItem.rightBarButtonItem?.tintColor = Colors.labelsColor
     }
     
     private func configureTopicsTableView() {
@@ -138,8 +135,7 @@ extension InitialViewController {
         
         view.addSubview(topicsTableView)
         topicsTableView.pinHorizontal(to: view, 15)
-        topicsTableView.pinTop(to: resetStatsButton.bottomAnchor, 5)
-        topicsTableView.pinBottom(to: view)
+        topicsTableView.pinVertical(to: view)
     }
 }
 
