@@ -11,6 +11,7 @@ import UIKit
 struct Colors {
     static let backgroundColor = UIColor(named: "BackgroundColor")
     static let labelsColor = UIColor(named: "LabelsColor")
-    
     static let correctColor = UIColor(named: "CorrectColor")
+    
+    static var accentColor = UIColor.systemYellow
 }

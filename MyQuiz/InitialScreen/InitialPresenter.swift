@@ -13,9 +13,15 @@ protocol InitialPresenterProtocol: AnyObject {
     var interactor: InitialInteractorProtocol? { get set }
     var view: InitialViewControllerProtocol? { get set }
     
+    var topicsTableView: TopicTableView? { get set }
+    
+    func fetchData()
+    
     func interactorDidFetchCategories(with categories: [String])
     func interactorDidFetchTopics(with topics: [Topic])
+    
     func topicTapped(with topic: Topic)
+    func settingsButtonTapped()
     
     func showClearDataAlert()
     func clearTopicsData()
@@ -24,32 +30,39 @@ protocol InitialPresenterProtocol: AnyObject {
 // MARK: - InitialPresenterProtocol Implementation
 final class InitialPresenter: InitialPresenterProtocol {
     var router: InitialRouterProtocol?
-    var interactor: InitialInteractorProtocol? {
-        didSet {
-            interactor?.getCategories()
-            interactor?.getTopics()
-        }
-    }
+    var interactor: InitialInteractorProtocol?
     var view: InitialViewControllerProtocol?
     
+    var topicsTableView: TopicTableView?
+    
+    func fetchData() {
+        interactor?.getCategories()
+        interactor?.getTopics()
+    }
+    
     func interactorDidFetchCategories(with categories: [String]) {
-        view?.updateCategories(with: categories)
+        topicsTableView?.updateCategories(with: categories)
     }
     
     func interactorDidFetchTopics(with topics: [Topic]) {
-        view?.updateTopics(with: topics)
+        topicsTableView?.updateTopics(with: topics)
     }
     
     func topicTapped(with topic: Topic) {
         router?.navigateToQuestion(with: topic)
     }
     
+    func settingsButtonTapped() {
+        router?.navigateToSettings()
+    }
+    
     func showClearDataAlert() {
         router?.showClearDataAlert()
+        topicsTableView?.updateTableView()
     }
     
     func clearTopicsData() {
-        DatabaseService.shared.clear()
+        DatabaseService.shared.clearAllTopics()
         interactor?.getTopics()
     }
 }

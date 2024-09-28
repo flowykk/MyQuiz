@@ -132,7 +132,7 @@ extension TopicCell {
     }
     
     private func configureSectionView() {
-        sectionView.backgroundColor    = .systemYellow
+        sectionView.backgroundColor    = Colors.accentColor
         sectionView.layer.cornerRadius = 15
         
         contentView.addSubview(sectionView)

@@ -18,6 +18,7 @@ protocol InitialRouterProtocol: AnyObject {
     
     func showClearDataAlert()
     func navigateToQuestion(with topic: Topic)
+    func navigateToSettings()
 }
 
 // MARK: - InitialRouterProtocol Implementation
@@ -66,6 +67,13 @@ final class InitialRouter: InitialRouterProtocol {
     
     func navigateToQuestion(with topic: Topic) {
         let router = QuestionRouter.start(with: topic)
+        let vc = router.entry
+        
+        entry?.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func navigateToSettings() {
+        let router = SettingsRouter.start()
         let vc = router.entry
         
         entry?.navigationController?.pushViewController(vc!, animated: true)
