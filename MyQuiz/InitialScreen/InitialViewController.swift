@@ -39,6 +39,10 @@ final class InitialViewController: UIViewController, InitialViewControllerProtoc
         
         configureUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateTableView()
+    }
 }
 
 // MARK: - class functions
@@ -84,7 +88,6 @@ extension InitialViewController {
         
         configureNavigationItem()
         configureTrashButton()
-        configureRefreshButton()
         
         configureResetStatsButton()
         configureTopicsTableView()
@@ -108,19 +111,6 @@ extension InitialViewController {
             target: self,
             action: #selector(settingsButtonTapped))
         navigationItem.leftBarButtonItem?.tintColor = Colors.labelsColor
-    }
-    
-    private func configureRefreshButton() {
-        let largeFont     = UIFont.systemFont(ofSize: 15, weight: .bold)
-        let configuration = UIImage.SymbolConfiguration(font: largeFont)
-        let image         = UIImage(systemName: "arrow.clockwise", withConfiguration: configuration)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: image,
-            style: .plain,
-            target: self,
-            action: #selector(updateTableView))
-        navigationItem.rightBarButtonItem?.tintColor = Colors.labelsColor
     }
     
     private func configureResetStatsButton() {
